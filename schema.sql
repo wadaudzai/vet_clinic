@@ -10,3 +10,6 @@ CREATE TABLE animals(
   neutered BOOLEAN,
   weight_kg DECIMAL
 );
+
+--This line is responsible for creating a new column to the animals table.
+ALTER TABLE animals ADD species VARCHAR(50);
