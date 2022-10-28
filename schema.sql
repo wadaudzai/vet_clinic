@@ -13,3 +13,26 @@ CREATE TABLE animals(
 
 --This line is responsible for creating a new column to the animals table.
 ALTER TABLE animals ADD species VARCHAR(50);
+
+-- OWNER TABLE CREATE 
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY, 
+  full_name VARCHAR(50), 
+  age INT, 
+  PRIMARY KEY(id)
+);
+
+-- SPECIES TABLE CREATE
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY, 
+  name VARCHAR(50), 
+  PRIMARY KEY(id)
+);
+
+-- ALTER animals TABLE TO CONTAIN SPECIES_ID
+ALTER TABLE animals ADD COLUMN species_id INT, 
+ADD CONSTRAINT f_species_id  FOREIGN KEY (species_id) REFERENCES species(id);
+
+-- ALTER animals TABLE TO CONTAIN OWNER_ID
+ALTER TABLE animals ADD COLUMN owners_id INT, 
+ADD CONSTRAINT f_owners_id FOREIGN KEY (owners_id) REFERENCES owners(id);
